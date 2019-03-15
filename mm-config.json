@@ -1,0 +1,27 @@
+{
+ "miner_host": "127.0.0.1",
+ "miner_port": 3333,
+ "pools": [
+  "gulf.moneroocean.stream:10001"
+ ],
+ "algos": {
+  "cn/r":      "teamredminer.exe -a cnr       -o stratum+tcp://localhost:3333 -u x -p x",
+  "cn/2":      "teamredminer.exe -a cnv8      -o stratum+tcp://localhost:3333 -u x -p x",
+  "cn/half":   "teamredminer.exe -a cnv8_half -o stratum+tcp://localhost:3333 -u x -p x",
+  "cn/double": "teamredminer.exe -a cnv8_dbl  -o stratum+tcp://localhost:3333 -u x -p x",
+  "cn/rwz":    "teamredminer.exe -a cnv8_rwz  -o stratum+tcp://localhost:3333 -u x -p x"
+ },
+ "algo_perf": {
+  "cn/r": 0,
+  "cn/2": 0,
+  "cn/half": 0,
+  "cn/double": 0,
+  "cn/rwz": 0
+ },
+ "algo_min_time": 0,
+ "user": "INSERT YOUR XMR WALLET HERE",
+ "pass": "x",
+ "log_file": null,
+ "watchdog": 600,
+ "hashrate_watchdog": 0
+}

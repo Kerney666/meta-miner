@@ -1,0 +1,44 @@
+TeamRedMiner Monero Ocean Algo Switching HOWTO
+==============================================
+
+1. Download and install nodejs for your platform. Tested with v10.15.1.
+
+2. Copy the file mm.js and mm-config.json to the teamredminer directory.
+
+3. Tune your rig(s) for the algos you want to run. Usually, tuning for cn/r
+   will be enough, the other algos should run fine on a system stable on cn/r.
+   Have a copy available of your full command line for TRM running cn/r on
+   your rig. 
+   
+4. Edit mm-config.json:
+    a) Replace all algo command lines (lines 8-12) with your full rig command
+       line from (3), but make sure you update the "-a <algo>" part for each
+	   line. Example of a rig with two cards with 8+8 and 15+15 as TRM configs:
+	   
+       "algos": {
+        "cn/r":      "teamredminer.exe -a cnr       -o stratum+tcp://localhost:3333 -u x -p x -d 0,1 --cn_config=8+8,15+15",
+        "cn/2":      "teamredminer.exe -a cnv8      -o stratum+tcp://localhost:3333 -u x -p x -d 0,1 --cn_config=8+8,15+15",
+        "cn/half":   "teamredminer.exe -a cnv8_half -o stratum+tcp://localhost:3333 -u x -p x -d 0,1 --cn_config=8+8,15+15",
+        "cn/double": "teamredminer.exe -a cnv8_dbl  -o stratum+tcp://localhost:3333 -u x -p x -d 0,1 --cn_config=8+8,15+15",
+        "cn/rwz":    "teamredminer.exe -a cnv8_rwz  -o stratum+tcp://localhost:3333 -u x -p x -d 0,1 --cn_config=8+8,15+15"
+       }
+	   
+    b) Replace the "INSERT YOUR XMR WALLET HERE" with your XMR wallet. Also,
+	   add a worker id as the password instead of "x" if you want to.
+	
+    c) For advanced users who wants to run more algos using other miners, add
+	   additional lines. You can find all available algos in mm.js.
+	
+	d) To provide manual benchmark numbers, replace the zeros in the
+	   "algo_perf" section. For zero values, the Meta Miner will benchmark your
+	   performance before beginning to mine and write back the numbers into the
+	   config file.
+	   
+	e) Modify other settings of you want to (hashrate_watchdog, log_file, etc).
+	
+5. Start the Meta Miner with "node mm.js mm-config.json" from a Windows cmd
+   prompt or Linux shell, being placed in the teamredminer binary directory.
+   Unless you provided all benchmark numbers manually, the first step should
+   be to benchmark all the algos. This process will take around 1m30s per algo.
+   It will only be done once.
+   
